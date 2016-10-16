@@ -1,0 +1,34 @@
+<h1><code ng:non-bindable="">YamlParse</code>
+<div><span class="hint">service in module <code ng:non-bindable="">myApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="myapp-service-page myapp-service-yamlparse-page"><p>This is the service respnsible for reading and parsing the yaml files to json format, so it the 
+application would be able to detect the structure of the service, the available resources and 
+their properties.</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_calc">calc()</h3>
+<div class="calc"><div class="calc-page"><p>This method is called from getschema function. It takes a string parameter with the contents 
+of the yaml file. The contents of the yaml files produced by S-case have a specific structure
+so this function is designed to parse only this specific type of yaml files. Each resource in 
+the yaml starts with a specific string (&quot;- !!eu.fp7.scase.inputParser.YamlResource&quot;). Has 
+a name, some features like if it is aalgorithmic or if it has a special attribute to be shown, 
+lastly it&#39;s properties and related resources. Calc() first splits the string to resources divided 
+by the string mentioned above, then each resource is splited to its rows and the name , features and
+properties are defined. These three create an object for each resource and stored to the resources_table.</p>
+</div></div>
+</li>
+<li><h3 id="methods_getschema">getschema()</h3>
+<div class="getschema"><div class="getschema-page"><p>This method sends an HTTP get request to retrieve the contents of the given yaml file and<br>then calls calc() function to create a table with the json objects of the resources.</p>
+</div></div>
+</li>
+<li><h3 id="methods_parsejson">parsejson()</h3>
+<div class="parsejson"><div class="parsejson-page"><p>This method is called in .run() block when the application starts. It calls the getschema() function
+and parses the given resource_table to json format so it can be uses from the rest of the application.</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

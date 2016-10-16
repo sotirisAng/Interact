@@ -1,0 +1,73 @@
+<h1><code ng:non-bindable="">mainCtrl</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">myApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="myapp-controller-page myapp-controller-mainctrl-page"><p>This is the controller respnsible to show the list of the resourse&#39;s options for the user. 
+It divides the the options in two lists, the first is the children of the resource and the other, 
+which can be found if user clicks the &quot;More Options&quot; button, is the list of the available CRUD actions.</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_actioncheck">actionCheck()</h3>
+<div class="actioncheck"><div class="actioncheck-page"><p>This method is called from the user when he chooses one of the options on the list of the given CRUD actions.
+after the check for the CRUD action, it sets the chosen resource as current and selects
+the page to which is going to redirect to complete the request.</p>
+</div></div>
+</li>
+<li><h3 id="methods_childimg">childImg()</h3>
+<div class="childimg"><div class="childimg-page"><p>This method is called from  getChildren() function. It creates a loop and sends an HTTP GET request
+for every child in the children[] array. Then it creates another loop for the attributes of each child
+and check if the attribute is an image. When the loops finsh it calls the objImage() function.</p>
+</div></div>
+</li>
+<li><h3 id="methods_closesidebar">closeSidebar()</h3>
+<div class="closesidebar"><div class="closesidebar-page"><p>This method is called from the user when he clicks the &quot;Cancel&quot; button of the sidebar and closes it. </p>
+</div></div>
+</li>
+<li><h3 id="methods_currentcheck">currentCheck()</h3>
+<div class="currentcheck"><div class="currentcheck-page"><p>This method is called first when the controller is been referenced to check if 
+the current object is defined. If the object is defined it calls getObj() 
+else it defines the current object from the main resource uri (apiUrl) which is given in the conf.js file.</p>
+</div></div>
+</li>
+<li><h3 id="methods_delete">delete()</h3>
+<div class="delete"><div class="delete-page"><p>This method is called from the deleteWarn() function after the user agrees to delete the selected resource. 
+It sends an HTTP Delete request for the resource and redirect to the view of the previous resource.</p>
+</div></div>
+</li>
+<li><h3 id="methods_deletewarn">deleteWarn()</h3>
+<div class="deletewarn"><div class="deletewarn-page"><p>This method is called from the actionCheck() function. It shows a warning message to the user and askes if 
+he realy wants to delete the resource. If the user agrees it calls the delete() function to complete the action.</p>
+</div></div>
+</li>
+<li><h3 id="methods_getchildren">getChildren()</h3>
+<div class="getchildren"><div class="getchildren-page"><p>This method is called from  getObj() function. It creates a loop and sends an HTTP GET request
+for every child of the resource and then stores children to the children[] array. 
+When the loop finishes, the childImg() function is called.</p>
+</div></div>
+</li>
+<li><h3 id="methods_getobj">getObj()</h3>
+<div class="getobj"><div class="getobj-page"><p>This method is called from  firstcall() and setCurrentObj(). It sends an HTTP GET request
+to retrieve data of the current object. Then it stores the response data to the variable 
+objs and calls the function getChildren().</p>
+</div></div>
+</li>
+<li><h3 id="methods_objimage">objImage()</h3>
+<div class="objimage"><div class="objimage-page"><p>This method is called from  childImg() function. It creates a triple loop to pass to every child 
+a new attribute which is the imageUrl and so it can preview the images. </p>
+</div></div>
+</li>
+<li><h3 id="methods_opensidebar">openSidebar()</h3>
+<div class="opensidebar"><div class="opensidebar-page"><p>This method is called from the user when he clicks the &quot;More Options&quot; button and opens the sidebar </p>
+</div></div>
+</li>
+<li><h3 id="methods_setcurrentobj">setCurrentObj()</h3>
+<div class="setcurrentobj"><div class="setcurrentobj-page"><p>This method is called from the actionCheck() function. It stores the new object to the current of the rootScope.
+and the uri of the current to the variable objUrl which is used from the getObj function to make the 
+GET request. Finaly it calls the getObj() function.</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

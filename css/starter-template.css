@@ -1,0 +1,41 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+.navbar {
+	margin-top: -50px;
+}
+.marketing .col-lg-4 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: normal;
+  margin-left: -10px
+}
+.marketing .col-lg-4 p {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.table {
+    table-layout:fixed;
+}
+
+.table td {
+  /*white-space: nowrap;*/
+  overflow: auto;
+  /*text-overflow: scroll;*/
+
+}
+
+#editForm input.ng-invalid  {
+  border: 1px solid red;
+}
+
+ #editForm input.ng-valid {
+  border: 1px solid green;
+}

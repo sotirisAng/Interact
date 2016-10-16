@@ -1,0 +1,98 @@
+<h1><code ng:non-bindable="">viewCtrl</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">myApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="myapp-controller-page myapp-controller-viewctrl-page"><p>This is the controller responsible for visualising the properties of the current resource. </p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_actioncheck">actionCheck()</h3>
+<div class="actioncheck"><div class="actioncheck-page"><p>This method is called from the user when he chooses one of the options on the list of the given CRUD actions.
+after the check for the CRUD action, it sets the chosen resource as current and selects
+the page to which is going to redirect to complete the request.</p>
+</div></div>
+</li>
+<li><h3 id="methods_closesidebar">closeSidebar()</h3>
+<div class="closesidebar"><div class="closesidebar-page"><p>This method is called from the user when he clicks the &quot;Cancel&quot; button of the sidebar and closes it. </p>
+</div></div>
+</li>
+<li><h3 id="methods_currentcheck">currentCheck()</h3>
+<div class="currentcheck"><div class="currentcheck-page"><p>This method is called first when the controller is been referenced to check if 
+there is an object to be shown. If the object is defined it calls getObj() 
+else it redirects to main page.</p>
+</div></div>
+</li>
+<li><h3 id="methods_delete">delete()</h3>
+<div class="delete"><div class="delete-page"><p>This method is called from the deleteWarn() function after the user agrees to delete the selected resource. 
+It sends an HTTP Delete request for the resource and redirect to the view of the previous resource.</p>
+</div></div>
+</li>
+<li><h3 id="methods_deletewarn">deleteWarn()</h3>
+<div class="deletewarn"><div class="deletewarn-page"><p>This method is called from the actionCheck() function. It shows a warning message to the user and askes if 
+he realy wants to delete the resource. If the user agrees it calls the delete() function to complete the action.</p>
+</div></div>
+</li>
+<li><h3 id="methods_embededcheck">embededCheck()</h3>
+<div class="embededcheck"><div class="embededcheck-page"><p>This method is called from the getObj() function. It uses the uri of the current
+resource and the parsedTable, which has the information from the yaml file in a json format. 
+S-case generates apis whose uris end with the name of the current resourse or with its id.
+So after comparing the uri ending whith the information f the parsedTable, it can recognize 
+the resourse an its properties. After it finds the resource in the parsed table, it searches the properties 
+of the resource for any embeded objects that as to be shown, and stores the the type and the spesific property
+at the corresponding variables embededType and embededProperty.</p>
+</div></div>
+</li>
+<li><h3 id="methods_find">find()</h3>
+<div class="find"><div class="find-page"><p>This method is called from getObj(),getChildrenList() and delete() functions. It uses the uri of the current
+resource and the parsedTable, which has the information from the yaml file in a json format. 
+S-case generates apis whose uris end with the name of the current resourse or with its id.
+So after comparing the uri ending whith the information f the parsedTable, it can recognize 
+the resourse an its properties. </p>
+</div></div>
+</li>
+<li><h3 id="methods_findreturnuri">findReturnUri()</h3>
+<div class="findreturnuri"><div class="findreturnuri-page"><p>This method is called from the getObj() function after the current object is defined, to find the uri 
+of the parent in case the user wants to return to it. if the resource uri ends with the id it passes the 
+uri to the returnUri variable else if ends with the resources name it passes the previousObj of the 
+rootScope.</p>
+</div></div>
+</li>
+<li><h3 id="methods_getchildrenlist">getChildrenList()</h3>
+<div class="getchildrenlist"><div class="getchildrenlist-page"><p>This method is called from  getObj() function. The perpose of this function is to find the resource&#39;s 
+children and divide them to categories. First it creates tow arrays, one for the children and one for the 
+categories. Then it start a loop for every child of the current resource and fills the categories array
+and adds a new attribute for the category to the children in the array. </p>
+</div></div>
+</li>
+<li><h3 id="methods_getobj">getObj()</h3>
+<div class="getobj"><div class="getobj-page"><p>This method is called from  currentCkeck() and setCurrentObj(). It sends an HTTP GET request
+to retrieve data of the current resource, which is going to be shown. 
+Then it stores the response data to the variable objs and calls the functions find(), findReturnUri()
+getChildrenList() and setEmbededObj(). If there is an error it is logs and redirect to main page.</p>
+</div></div>
+</li>
+<li><h3 id="methods_opensidebar">openSidebar()</h3>
+<div class="opensidebar"><div class="opensidebar-page"><p>This method is called from the user when he clicks the &quot;More Options&quot; button and opens the sidebar </p>
+</div></div>
+</li>
+<li><h3 id="methods_return">return()</h3>
+<div class="return"><div class="return-page"><p>This method is called from the user when he clicks the cancel button and wants to return back to the 
+view of the previous object. It sets the object to which it going to redirect as current and redirects.</p>
+</div></div>
+</li>
+<li><h3 id="methods_setcurrentobj">setCurrentObj()</h3>
+<div class="setcurrentobj"><div class="setcurrentobj-page"><p>This method is called from request() and return() functions. It stores the current object 
+to the rootScope as previousObj so it will be able to redirect back after the submission of the form. 
+Then it stores the new object to the current of the rootScope. Finaly it calls the getObj() function.</p>
+</div></div>
+</li>
+<li><h3 id="methods_setembededobj">setEmbededObj()</h3>
+<div class="setembededobj"><div class="setembededobj-page"><p>This method is called from  getObj() function. The perpose of this function is to declare
+the type of the embeded object,if there is one, and add the the proper value to embededUri
+varaible.</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

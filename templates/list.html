@@ -1,0 +1,52 @@
+<div ng-controller="mainCtrl as vm" >
+
+	<md-sidenav class="md-sidenav-left" md-component-id="left">
+		<md-toolbar>
+			<h1>Options</h1>
+		</md-toolbar>
+		<md-content layout-padding>
+		<!-- <p>Choose your Destiny!</p> -->
+		<table class="table">
+			
+			<tr ng-repeat="obj in vm.objs.linklist"  ng-if="obj.idType == 0">
+			<td><a href="" ng-click="vm.actionCheck(obj); vm.closeSidebar()"  >{{obj.linkRel}}</a></td>
+			</tr>
+		</table>
+		<md-button class="md-primary" ng-click=" vm.closeSidebar()">Cancel</md-button>
+		</md-content>
+	</md-sidenav>
+
+	
+
+	<div class="starter-template">
+		<h2 >{{vm.currentObject.linkRel}}</h2>
+		<!-- <p class="lead">Make yourself comfortable...</p> -->
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-lg-12">
+			<form action="" class="form">
+				<div class="form-group col-lg-10 ">
+					<input type="text" class="form-control" ng-model="searchTerm" placeholder="Enter Search Term">
+				</div>
+					<button class="btn btn-warn" ng-click="searchTerm= '' ">
+						Clear     
+					</button>
+				
+				
+			</form>
+		</div>
+	</div>
+	<br>
+	<div class="container marketing">
+
+	<div class="row">
+        <div class="col-lg-4" ng-repeat="obj in vm.objs.linklist | filter : searchTerm" ng-if="obj.idType != 0" > 
+          <img ng-if="obj.imageUrl" class="img-circle" ng-src={{obj.imageUrl}} alt="Generic placeholder image" width="140" height="140" >
+          <h2>{{obj.linkRel}}</h2>
+         <a class="btn btn-default"  role="button" ng-click="vm.actionCheck(obj)">View details &raquo;</a>
+        </div><!-- /.col-lg-4 -->
+        
+      </div>
+		
+</div>

@@ -1,0 +1,102 @@
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: account
+  IsAlgorithmic: false
+  CRUDActivities: [Create, Read, Update, Delete]
+  Properties:
+  - Name: username
+    Type: String
+    Required: true
+    Unique: true
+    NamingProperty: true
+  - Name: password
+    Type: password
+    Required: true
+    Unique: false
+    NamingProperty: false 
+  - Name: email
+    Type: String
+    Required: true
+    Unique: false
+    NamingProperty: false
+  - Name: creditCard
+    Type: long
+    Unique: false
+    NamingProperty: false
+  - Name: expMonth
+    Type: intiger
+    Unique: false
+    NamingProperty: false
+  - Name: expYear
+    Type: intiger
+    Unique: false
+    NamingProperty: false
+  RelatedResources: []
+
+  - !!eu.fp7.scase.inputParser.YamlResource
+  Name: purchase
+  IsAlgorithmic: false
+  CRUDActivities: [Create, Read, Update, Delete]
+  Properties:
+  - Name: date
+    Type: date
+    Unique: true
+    NamingProperty: true
+  - Name: quantity
+    Type: intiger
+    Unique: false
+    NamingProperty: false 
+  - Name: sku
+    Type: String
+    Unique: false
+  RelatedResources: []
+
+  - !!eu.fp7.scase.inputParser.YamlResource
+  Name: product
+  IsAlgorithmic: false
+  CRUDActivities: [Create, Read, Update, Delete]
+  embededObjects: true
+  embededType: image
+  embededProperty: imageUrl
+  Properties:
+  - Name: category
+    Type: String
+    Unique: true
+    NamingProperty: true
+  - Name: description
+    Type: String
+    Unique: false
+    NamingProperty: false 
+  - Name: imageUrl
+    Type: String
+    Unique: false
+    NamingProperty: false
+  - Name: price
+    Type: float
+    Unique: false
+    NamingProperty: false
+  - Name: title
+    Type: String
+    Unique: false
+    Required: true
+    NamingProperty: false
+  RelatedResources: []
+
+  - !!eu.fp7.scase.inputParser.YamlResource
+  Name: review
+  IsAlgorithmic: false
+  CRUDActivities: [Create, Read, Update, Delete]
+  Properties:
+  - Name: title
+    Type: String
+    Required: true
+    Unique: true
+    NamingProperty: true
+  - Name: rating
+    Type: Intiger
+    Unique: false
+    NamingProperty: false 
+  - Name: review
+    Type: textarea
+    Unique: false
+    NamingProperty: false
+  RelatedResources: []

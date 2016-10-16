@@ -1,0 +1,25 @@
+<div ng-controller="editCtrl as vm">
+	<div class="col-sm-4"  >
+			
+			<div class="container">
+			
+			<ng-form id="editForm" action="submit" class="form">
+				<div ng-repeat="(key,atr) in vm.formObj" class="form-group"> 
+				<label class="">{{key}}</label>
+				<input name="{{key}}" class=" form-control" type="{{vm.formType[key]}}"  ng-model="vm.formObj[key]" ng-value="atr" ng-required="{{vm.formReq[key]}}" ng-if="vm.formType[key] != 'textarea'">
+				<textarea form="editForm" name="{{key}}" class="form-control" type="{{vm.formType[key]}}"  ng-model="vm.formObj[key]" ng-value="atr" ng-required="{{vm.formReq[key]}}" ng-if="vm.formType[key] === 'textarea'"> </textarea> 
+				<div ng-if="key === vm.embededProperty"><p>{{embededMessage}}</p></div>
+				<div ng-if="vm.formReq[key]"><p  ng-hide='editForm.{{key}}.$dirty'>*Required</p></div>
+				</div>
+
+			<button ng-if="vm.actionbutton"  ng-click="vm.request()" class="btn btn-default" ng-disabled="editForm.$invalid">{{vm.actionbutton}}</button>
+			</ng-form>
+			 <button class="btn" 
+			  ng-click="vm.return()" >
+			 Cancel</button>
+			</div>
+		
+
+
+	</div>
+</div>

@@ -1,0 +1,534 @@
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: currency
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: [Read, Create]
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties:
+  - Name: symbol
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: abbreviation
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: name
+    Type: String
+    Unique: true
+    NamingProperty: false
+  RelatedResources: [country]
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: users
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: [Read, Update, Delete, Create]
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties:
+  - Name: email
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: accesstoken
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: mobile
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: lastname
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: password
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: title
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: role
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: username
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: firstname
+    Type: String
+    Unique: true
+    NamingProperty: false
+  RelatedResources: []
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: timezone
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: [Read, Create]
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties:
+  - Name: timezone
+    Type: String
+    Unique: true
+    NamingProperty: false
+  RelatedResources: [site]
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: country
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: [Read, Create]
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties:
+  - Name: name
+    Type: String
+    Unique: true
+    NamingProperty: false
+  RelatedResources: [site]
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: units
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: [Read, Create]
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties:
+  - Name: name
+    Type: String
+    Unique: true
+    NamingProperty: false
+  RelatedResources: [point]
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: staticPointMarker
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: [Delete, Update, Read, Create]
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties:
+  - Name: name
+    Type: String
+    Unique: true
+    NamingProperty: false
+  RelatedResources: [equipmentTypesstaticPointMarker, staticPoint]
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: sites
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: [Read, Create, Update, Delete]
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  embededObjects: true
+  embededType: image
+  embededProperty: city
+  Properties:
+  - Name: parking
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: postalcode
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: telephone
+    Type: String
+    Required: true
+    Unique: true
+    NamingProperty: false
+  - Name: lat
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: alertemailnet
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: city
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: floor
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: lon
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: state
+    Type: email
+    Required: true
+    Unique: true
+    NamingProperty: false
+  - Name: kwhtocurrency
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: salesarea
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: dateonline
+    Type: date
+    Unique: true
+    NamingProperty: false
+  - Name: datebuild
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: active
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: kwhtoco2
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: name
+    Type: String  
+    Required: true
+    Unique: true
+    NamingProperty: false
+  - Name: address
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: area
+    Type: String
+    Unique: true
+    NamingProperty: false
+  RelatedResources: [siteSearch, zone, equipment]
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: siteSearch
+  IsAlgorithmic: true
+  IsExternalService: false
+  CRUDActivities: []
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties: []
+  RelatedResources: []
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: equipmentTyp
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: [Read, Update, Delete, Create]
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties:
+  - Name: name
+    Type: String
+    Unique: true
+    NamingProperty: false
+  RelatedResources: []
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: staticPoint
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: [Create, Read, Update, Delete]
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties:
+  - Name: value
+    Type: String
+    Unique: true
+    NamingProperty: false
+  RelatedResources: []
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: equipmentType
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: []
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties: []
+  RelatedResources: [equipmentTypesstaticPointMarker, equipmentTypespointMarker, equipment]
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: dummy
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: []
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties: []
+  RelatedResources: [dummyDummy, staticPoint]
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: dummyDummy
+  IsAlgorithmic: true
+  IsExternalService: false
+  CRUDActivities: []
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties: []
+  RelatedResources: []
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: equipmentTypesstaticPointMarker
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: [Update, Create, Delete, Read]
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties: []
+  RelatedResources: []
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: zone
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: [Create, Update, Delete, Read]
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties:
+  - Name: name
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: floor
+    Type: String
+    Unique: true
+    NamingProperty: false
+  RelatedResources: []
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: equipment
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: [Create, Update, Delete, Read]
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties:
+  - Name: active
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: hasdata
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: name
+    Type: String
+    Unique: true
+    NamingProperty: false
+  RelatedResources: [staticPointMarker, staticPoint, point, equipmentSearch, dummy]
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: equipmentSearch
+  IsAlgorithmic: true
+  IsExternalService: false
+  CRUDActivities: []
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties: []
+  RelatedResources: []
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: accountType
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: []
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties: []
+  RelatedResources: [account]
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: accountTyp
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: [Read, Delete, Create, Update]
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties:
+  - Name: name
+    Type: String
+    Unique: true
+    NamingProperty: false
+  RelatedResources: []
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: weatherconditionsathen
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: []
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties: []
+  RelatedResources: [weatherconditionsathenWeatherconditionsathen]
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: weatherconditionsathenWeatherconditionsathen
+  IsAlgorithmic: true
+  IsExternalService: false
+  CRUDActivities: []
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties: []
+  RelatedResources: []
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: pointMarker
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: [Create]
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties:
+  - Name: maxval
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: minval
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: name
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: minrate
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: maxrate
+    Type: String
+    Unique: true
+    NamingProperty: false
+  RelatedResources: [equipmentTypespointMarker, point]
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: accounts
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: [Read, Create, Delete, Update]
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties:
+  - Name: state
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: name
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: postalcode
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: city
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: phone
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: address
+    Type: String
+    Unique: true
+    NamingProperty: false
+  RelatedResources: [site, user]
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: siteTyp
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: [Create, Read]
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties:
+  - Name: name
+    Type: String
+    Unique: true
+    NamingProperty: false
+  RelatedResources: [site]
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: points
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: [Read, Update, Create, Delete]
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties:
+  - Name: maxval
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: name
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: minval
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: minrate
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: samplingperiod
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: validvalue
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: maxrate
+    Type: String
+    Unique: true
+    NamingProperty: false
+  - Name: altid
+    Type: String
+    Unique: true
+    NamingProperty: false
+  RelatedResources: [pointSearch, staticPoint]
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: pointSearch
+  IsAlgorithmic: true
+  IsExternalService: false
+  CRUDActivities: []
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties: []
+  RelatedResources: []
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: equipmentTypespointMarker
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: [Read, Create, Delete, Update]
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties: []
+  RelatedResources: []
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: unitType
+  IsAlgorithmic: false
+  IsExternalService: false
+  CRUDActivities: []
+  InputRepresentation: JSON
+  OutputRepresentation: JSON
+  Properties: []
+  RelatedResources: [pointMarker, unit]
+

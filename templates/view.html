@@ -1,0 +1,84 @@
+<div ng-controller="viewCtrl as vm" >
+	<md-sidenav class="md-sidenav-left" md-component-id="left">
+		<md-toolbar>
+			<h1>Options</h1>
+		</md-toolbar>
+		<md-content layout-padding>
+			<!-- <p>Choose your Destiny!</p> -->
+			<table class="table">
+				<tr ng-repeat = "obj in vm.objs.linklist"  ng-if="obj.idType == '0' " role="presentation" ng-click="vm.actionCheck(obj); vm.closeSidebar() " >
+				<!-- && obj.linkVerb !='GET' -->
+					<td><a href="" >{{obj.linkRel}}</a></td>
+				</tr>
+			</table>
+			<md-button class="md-primary" ng-click=" vm.closeSidebar()">Cancel</md-button>
+		</md-content>
+	</md-sidenav>
+
+	<div class='row'>
+		<div class='col-lg-10'>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">{{currentObject.linkRel}}</h3>
+				</div>
+				<div class="panel-body">
+
+					<div class='row'> 
+
+						<div ng-if="embededUri">
+							<div class='col-lg-4' ng-switch="vm.embededType" >
+								
+								<img ng-switch-when="image" ng-src="{{embededUri}}" width = '200px' >
+
+								<iframe ng-switch-when="video" width="280" height="157" ng-src={{embededUri}} frameborder="0" allowfullscreen ></iframe>
+
+								<iframe ng-switch-when="map" width="300" height="225" frameborder="0" style="border:0"
+								ng-src="{{embededUri}}" allowfullscreen></iframe>
+
+								<pre ng-switch-when="code"  style="width: 300px; height: 40pc; overflow-y: scroll;" >{{embededUri}}</pre>
+
+							</div>
+						</div>
+
+						<div class='col-lg-6'>
+
+							<table  class="table">
+								<thead >
+									<tr> 
+										<th> Property </th>
+										<th> Value </th>
+									</tr> 
+								</thead>
+								<tbody>
+									<tr ng-repeat="(key,atr) in vm.objs " ng-if="key != 'linklist' ">
+										<td >{{key}}</td>
+										<td >{{atr}}</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<div ng-repeat="category in vm.childCategories">
+								<table class="table">
+									<thead>
+										<th>{{category}}</th>
+									</thead>
+									<tr ng-repeat="child in vm.children2 | filter : searchTerm">
+										<td ng-if="child.category === category"><a href="" ng-click="vm.actionCheck(child)">{{child.linkRel}}</a></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+
+						<div class="col-sm-8">	
+							<button class="btn" ng-click="vm.return()" >
+								Return
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- <iframe width="600" height="700" frameborder="0" style="border:0" src="http://localhost/testvm/New" allowfullscreen></iframe> -->
+</div>

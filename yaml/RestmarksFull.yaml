@@ -1,0 +1,31 @@
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: account
+  IsAlgorithmic: false
+  CRUDActivities: [Create, Read, Update, Delete]
+  Properties:
+  - Name: username
+    Type: String
+    Unique: true
+    NamingProperty: true
+  - Name: password
+    Type: password
+    Unique: false
+    NamingProperty: false
+  RelatedResources: [bookmark]
+
+- !!eu.fp7.scase.inputParser.YamlResource
+  Name: bookmark
+  IsAlgorithmic: false
+  CRUDActivities: [Create, Read, Update, Delete]
+  Properties:
+  - Name: url
+    Type: String
+    Unique: true
+    NamingProperty: true
+  - Name: keyword
+    Type: String
+    Unique: false
+    NamingProperty: false
+  RelatedResources: []
+
+  

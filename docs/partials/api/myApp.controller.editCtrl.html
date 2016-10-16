@@ -1,0 +1,74 @@
+<h1><code ng:non-bindable="">editCtrl</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">myApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="myapp-controller-page myapp-controller-editctrl-page"><p>This is the controller respnsible to create the forms and execute the requests 
+for posting and updating data to the api&#39;s resources. </p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_currentcheck">currentCheck()</h3>
+<div class="currentcheck"><div class="currentcheck-page"><p>This method is called first when the controller is been referenced to check if 
+there is an object for posting or editing. If the object is defined it calls getObj() 
+else it redirects to main page.</p>
+</div></div>
+</li>
+<li><h3 id="methods_find">find()</h3>
+<div class="find"><div class="find-page"><p>This method is called from getObj() and request() functions. It uses the uri of the current
+resource and the parsedTable, which has the information from the yaml file in a json format. 
+S-case generates apis whose uris end with the name of the current resourse or with its id.
+So after comparing the uri ending whith the information f the parsedTable, it can recognize 
+the resourse an its properties. After that it creates a form object which is used to generate 
+the form and will contain the values of the current resource. Then formType and formReq arrays 
+are created to store the information about the type of the resource&#39;s properties and if they are 
+required. Finally it calls the function passArguments().</p>
+</div></div>
+</li>
+<li><h3 id="methods_findreturnuri">findReturnUri()</h3>
+<div class="findreturnuri"><div class="findreturnuri-page"><p>This method is called from the getObj() function after the current object is defined, to find the uri 
+of the parent in case the user wants to return to it. if the resource uri ends with the id it passes the 
+uri to the returnUri variable else if ends with the resources name it passes the previousObj of the 
+rootScope.</p>
+</div></div>
+</li>
+<li><h3 id="methods_getobj">getObj()</h3>
+<div class="getobj"><div class="getobj-page"><p>This method is called from  currentCkeck() and setCurrentObj(). It sends an HTTP GET request
+to retrieve data of the current object, which is going to be edited, or the resource to whom 
+the user is going to create a new object. Then it stores the response data to the variable 
+objs and calls the functions find() and findReturnUri().</p>
+</div></div>
+</li>
+<li><h3 id="methods_passarguments">passArguments()</h3>
+<div class="passarguments"><div class="passarguments-page"><p>This method is called from the find() function. It creates a loop for every attribute 
+of the form object and checks if the current object has the same. If it does the attribute&#39;s
+value passes to corresponding one of the formObj.</p>
+</div></div>
+</li>
+<li><h3 id="methods_request">request()</h3>
+<div class="request"><div class="request-page"><p>This method is called from the user when he clicks the submit button of the form at the edit.html file.
+It uses the current object of the rootScope to define the http method and the uri, to make the request.
+After a successful request it stores the response data to the variable objs , shows a notification based on 
+the method type and finaly redirects to /view page. 
+If there is an error response ocode of 401 or 403 it shows a notification for the user to sign in and logs the error.</p>
+</div></div>
+</li>
+<li><h3 id="methods_return">return()</h3>
+<div class="return"><div class="return-page"><p>This method is called from the user when he clicks the cancel button and wants to return back to the 
+view of the previous object. It sets the object to which it going to redirect as current and redirects.</p>
+</div></div>
+</li>
+<li><h3 id="methods_setaction">setAction()</h3>
+<div class="setaction"><div class="setaction-page"><p>This method is called from when the controller first runs and defines what it will be written 
+on the submit button of the form, based on the linkVerb of the current object.</p>
+</div></div>
+</li>
+<li><h3 id="methods_setcurrentobj">setCurrentObj()</h3>
+<div class="setcurrentobj"><div class="setcurrentobj-page"><p>This method is called from request() and return() functions. It stores the current object 
+to the rootScope as previousObj so it will be able to redirect back after the submission of the form. 
+Then it stores the new object to the current of the rootScope. Finaly it calls the getObj() function.</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

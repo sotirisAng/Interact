@@ -1,0 +1,57 @@
+<h1><code ng:non-bindable="">SignInCtrl</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">myApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="myapp-controller-page myapp-controller-signinctrl-page"><p>This is the controller respnsible for the authentication of the service and also for the navbar which is 
+visble in every view.</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_actioncheck">actionCheck()</h3>
+<div class="actioncheck"><div class="actioncheck-page"><p>This method is called when the user chooses to sign out. It clears the credentials and the headers
+and markes the signedIn variable to flase.</p>
+</div></div>
+</li>
+<li><h3 id="methods_clearcurrent">clearCurrent()</h3>
+<div class="clearcurrent"><div class="clearcurrent-page"><p>This method is called when the user clicks the &quot;Home&quot; button. It clears the cuurent object of the 
+rootScope, trigers an event to inform the mainCtrl to reload and redirects to the main page.</p>
+</div></div>
+</li>
+<li><h3 id="methods_closesidebar">closeSidebar()</h3>
+<div class="closesidebar"><div class="closesidebar-page"><p>This method is called from the user when he clicks the &quot;Cancel&quot; button of the sidebar and closes it. </p>
+</div></div>
+</li>
+<li><h3 id="methods_find">find()</h3>
+<div class="find"><div class="find-page"><p>This method is called when the controller is referenced. It uses the uri of the current
+resource and the parsedTable, which has the information from the yaml file in a json format. 
+S-case generates apis whose uris end with the name of the current resourse or with its id.
+So after comparing the uri ending whith the information f the parsedTable, it can recognize 
+the resourse an its properties. After that it creates a form object which is used to generate 
+the form that will be posted to the server to create a new user. Then formType array 
+is created to store the information about the type of the resource&#39;s properties.</p>
+</div></div>
+</li>
+<li><h3 id="methods_opensidebar">openSidebar()</h3>
+<div class="opensidebar"><div class="opensidebar-page"><p>This method is called from the user when he clicks the &quot;More Options&quot; button and opens the sidebar </p>
+</div></div>
+</li>
+<li><h3 id="methods_signin">signIn()</h3>
+<div class="signin"><div class="signin-page"><p>This method is called when the user tries to authenticate. It sends an HTTP GET request 
+with the user&#39;s credentials to the server. If the response is positive the given credentials are
+stored to the credentials variable of the SignIn service so it can create the headers for enery
+other request. Until the user signs in all the request are either forbbiden or sent without 
+headers. Then it shows a &quot;welcome&quot; message to the user, marks the signedIn variable of the rootScope
+as true, clears the current resource an redirects to the main page. If the response has an error, 
+it informs the user that he entered wrong credentials and log the error.</p>
+</div></div>
+</li>
+<li><h3 id="methods_signup">signUp()</h3>
+<div class="signup"><div class="signup-page"><p>This method is called when the user fills the form to create a new user resource and presses the 
+submit button. To create a new user it sends an HTTP POST request to the server with the data 
+filled in the form as a form object.</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>
