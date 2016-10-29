@@ -17,7 +17,7 @@ app.controller('editCtrl',['config','$http','$scope','$rootScope','$location','S
 		vm.formObj = {};
 		vm.formType = {};
 		vm.formReq = {};
-		vm.currentObject = $rootScope.currentObject;
+		// vm.currentObject = $rootScope.currentObject;
 
 		/**
 		* @ngdoc method
@@ -105,7 +105,7 @@ app.controller('editCtrl',['config','$http','$scope','$rootScope','$location','S
 			for (i = 0 ; i<vm.parsedTable.length; i++){
 				var y = vm.parsedTable[i].Name;
 				var k =new RegExp( y +'\/\\d{1,4}$');
-				if (k.test(vm.currentObject.linkURI) || vm.currentObject.linkURI.endsWith(y) ){
+				if (k.test($rootScope.currentObject.linkURI) || $rootScope.currentObject.linkURI.endsWith(y) ){
 					vm.name = y;
 					vm.formObj = {};
 					for(j=0; j<vm.parsedTable[i].Properties.length; j++){
@@ -121,7 +121,7 @@ app.controller('editCtrl',['config','$http','$scope','$rootScope','$location','S
 						vm.embeded = true;
 						vm.embededType = vm.parsedTable[i].Features.embededType.trim();
 						vm.embededProperty = vm.parsedTable[i].Features.embededProperty.trim();
-						console.log(vm.embededType);
+						// console.log(vm.embededType);
 						vm.setEmbededMessage();
 					}
 					vm.passArguments ();
@@ -134,7 +134,7 @@ app.controller('editCtrl',['config','$http','$scope','$rootScope','$location','S
 			angular.forEach(vm.formObj, function(key,atr){
 				// console.log(atr+" , '" + vm.embededProperty+"'")
 				// if (vm.embeded){
-					console.log(atr + ", " + vm.embededProperty)
+					// console.log(atr + ", " + vm.embededProperty)
 					if (atr === vm.embededProperty){
 						switch(vm.embededType.trim()){
 							case 'image': 
@@ -193,7 +193,7 @@ app.controller('editCtrl',['config','$http','$scope','$rootScope','$location','S
 		**/
 
 		vm.setCurrentObj= function(obj){
-			$rootScope.previusObj = vm.currentObject;
+			$rootScope.previousObj = $rootScope.currentObject;
 			$rootScope.currentObject = obj;
 			CurrentOb.set(obj);
 			// vm.objUrl = $rootScope.currentObject.linkURI;
@@ -256,9 +256,9 @@ app.controller('editCtrl',['config','$http','$scope','$rootScope','$location','S
 
 
 		vm.setAction = function(linkVerb){
-			if (linkVerb == "POST") { vm.actionbutton = "create"; }
-			else if (linkVerb == "PUT") { vm.actionbutton = "update" ;}
-			else if (linkVerb == "DELETE") { vm.actionbutton = "delete" ;}
+			if (linkVerb == "POST") { vm.actionbutton = "Create"; }
+			else if (linkVerb == "PUT") { vm.actionbutton = "Update" ;}
+			else if (linkVerb == "DELETE") { vm.actionbutton = "Delete" ;}
 			else if (linkVerb == "GET") { vm.actionbutton = "" ;}
 		};
 
@@ -291,8 +291,8 @@ app.controller('editCtrl',['config','$http','$scope','$rootScope','$location','S
 							vm.returnObj = obj;	
 						}
 						else if (isNaN(uriEnding)){
-							vm.returnUri = $rootScope.previusObj.linkURI;	
-							vm.returnObj = $rootScope.previusObj;	
+							vm.returnUri = $rootScope.previousObj.linkURI;	
+							vm.returnObj = $rootScope.previousObj;	
 							// console.log(returnUri)
 						}
 					}
@@ -332,5 +332,5 @@ app.controller('editCtrl',['config','$http','$scope','$rootScope','$location','S
 					}
 				};
 		vm.currentCkeck();
-		vm.setAction(vm.currentObject.linkVerb);
+		vm.setAction($rootScope.currentObject.linkVerb);
 	}]);

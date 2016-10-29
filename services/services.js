@@ -3,7 +3,7 @@
 	* @name myApp.service:YamlParse
 	* @description:
 	*
-	*This is the service respnsible for reading and parsing the yaml files to json format, so it the 
+	*This is the service respnsible for reading and parsing the yaml files to json format, so the 
 	* application would be able to detect the structure of the service, the available resources and 
 	* their properties.
 	**/
@@ -124,8 +124,8 @@
 					// var deferred = $q.defer;
 					vm.getschema().then(function(){
 						for(i=0; i<vm.table.length; i++){
-							vm.initObject = vm.table[i];
-							vm.parsedTable[i] = JSON.parse(vm.initObject);
+							// vm.initObject = vm.table[i];
+							vm.parsedTable[i] = JSON.parse(vm.table[i]);
 						}
 						console.log(vm.parsedTable);
 					});
@@ -138,12 +138,12 @@
 		var vm=this;
 
 		$rootScope.currentObject = {};
-		$rootScope.previusObj = {};
+		$rootScope.previousObj = {};
 
 
-		vm.test = function(){
-			return $rootScope.currentObject;
-		};
+		// vm.test = function(){
+		// 	return $rootScope.currentObject;
+		// };
 
 		vm.set=function(obj){
 			if(obj){
@@ -164,7 +164,7 @@
 	app.service('SignIn',function($rootScope){
 		var vm = this;
 
-		$rootScope.credentials = "" ;
+		// $rootScope.credentials = "" ;
 		vm.credentials="";
 
 		/**

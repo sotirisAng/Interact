@@ -1,22 +1,16 @@
-<div ng-controller="viewCtrl as vm" >
-	<md-sidenav class="md-sidenav-left" md-component-id="left">
-		<md-toolbar>
-			<h1>Options</h1>
-		</md-toolbar>
-		<md-content layout-padding>
-			<!-- <p>Choose your Destiny!</p> -->
-			<table class="table">
-				<tr ng-repeat = "obj in vm.objs.linklist"  ng-if="obj.idType == '0' " role="presentation" ng-click="vm.actionCheck(obj); vm.closeSidebar() " >
-				<!-- && obj.linkVerb !='GET' -->
-					<td><a  class="list-group-item" href="" >{{obj.linkRel}}</a></td>
-				</tr>
-			</table>
-			<md-button class="md-primary" ng-click=" vm.closeSidebar()">Cancel</md-button>
-		</md-content>
-	</md-sidenav>
-
-	<div class='row'>
-		<div class='col-lg-10'>
+<div ng-controller="viewCtrl as vm"  class="container-fluid" ng-init="$rootScope.dashboard = true">
+	
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a>Options <span class="sr-only">(current)</span></a></li>
+            <li ng-repeat="obj in vm.objs.linklist"  ng-if="obj.idType == 0"><a href="" ng-click="vm.actionCheck(obj); vm.closeSidebar()" class="list-group-item" >{{obj.linkRel}}</a></li>
+           
+          </ul>
+          
+        </div>
+	<!-- <div class='row'> -->
+		<div class="col-sm-9 col-sm-offset-3 col-md-11 col-md-offset-2 main">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">{{currentObject.linkRel}}</h3>

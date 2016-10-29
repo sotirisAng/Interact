@@ -1,9 +1,16 @@
 <div ng-controller="editCtrl as vm">
-	<div class="col-sm-4"  >
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6"  >
 			
-			<div class="container">
-			
-			<ng-form id="editForm" action="submit" class="form">
+			<!-- <div class="container"> -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+				<h3 class="panel-title">
+					{{currentObject.linkRel}}
+				</h3>
+			</div>
+			<div class="panel-body">
+				<ng-form id="editForm" name="editForm" action="submit" class="form">
 				<div ng-repeat="(key,atr) in vm.formObj" class="form-group"> 
 				<label class="">{{key}}</label>
 				<input name="{{key}}" class=" form-control" type="{{vm.formType[key]}}"  ng-model="vm.formObj[key]" ng-value="atr" ng-required="{{vm.formReq[key]}}" ng-if="vm.formType[key] != 'textarea'">
@@ -18,6 +25,10 @@
 			  ng-click="vm.return()" >
 			 Cancel</button>
 			</div>
+			</div>
+			<!-- </div> -->
+			
+			
 		
 
 

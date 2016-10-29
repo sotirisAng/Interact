@@ -14,7 +14,7 @@
     Unique: false
     NamingProperty: false 
   - Name: email
-    Type: String
+    Type: email
     Required: true
     Unique: false
     NamingProperty: false

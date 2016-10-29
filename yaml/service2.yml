@@ -130,7 +130,7 @@
   InputRepresentation: JSON
   OutputRepresentation: JSON
   embededObjects: true
-  embededType: image
+  embededType: map
   embededProperty: city
   Properties:
   - Name: parking

@@ -14,7 +14,7 @@
              <div class="form-group">
                <input type="password" placeholder="Password" class="form-control" ng-model="password">
              </div>
-             <button type="submit" class="btn btn-success" ng-click="vm.signIn(username, password)">Sign in</button>
+             <button type="submit" class="btn btn-success" ng-click="vm.signIn(username, password)" ng-disabled="editForm.$invalid">Sign in</button>
     </form>
     
     </div> 
@@ -30,13 +30,13 @@
 	</div>
 	<!-- <h2> Create a new User</h2> -->
 	<div class="panel-body">
-			<ng-form id="SignUpForm" action="submit" class="" >
+			<ng-form id="SignUpForm" name="SignUpForm" action="submit" class="" >
 				<div ng-repeat="(key,atr) in vm.formObj" class="form-group"> 
 				<label class="">{{key}}</label>
-				<input  class=" form-control" type="{{vm.formType[key]}}"  ng-model="vm.formObj[key]" ng-value="atr"> 
+				<input  class=" form-control" type="{{vm.formType[key]}}"  ng-model="vm.formObj[key]" ng-value="atr" ng-required="{{vm.formReq[key]}}"> 
 				<div ng-if="vm.formReq[key]"><p  ng-hide='SignUpForm.{{key}}.$dirty'>*Required</p></div>
 				</div>
-			<button ng-click="vm.signUp()" class="btn btn-success">Sign Up</button>
+			<button ng-click="vm.signUp()" class="btn btn-success" ng-disabled="SignUpForm.$invalid" >Sign Up</button>
 			
 			</ng-form>
 			</div>

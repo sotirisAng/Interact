@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html ng-app="myApp">
 <head>
 	
 	<script src="lib/angular-1.5.0/angular.js"></script>
@@ -16,8 +16,9 @@
 	<link rel="stylesheet" href="lib/angular-material/angular-material.css">
 	<link rel="stylesheet" href="css/starter-template.css">
 	<link rel="stylesheet" href="lib/angular-ui-notification/dist/angular-ui-notification.min.css">
+  <link href="css/dashboard.css" rel="stylesheet">
 
-  <script type="text/javascript" src="appYaml.js"></script>
+  <script type="text/javascript" src="app.js"></script>
 	<script type="text/javascript" src="conf.js"></script>
 	<script type="text/javascript" src="services/services.js"></script>
   <script type="text/javascript" src="controllers/mainCtrl.js"></script>
@@ -25,13 +26,14 @@
   <script type="text/javascript" src="controllers/viewCtrl.js"></script>
   <script type="text/javascript" src="controllers/editCtrl.js"></script>
 	
-	<title ng-controller="mainCtrl as vm">test</title>
+	<title ng-controller="mainCtrl as vm">{{serviceName}}</title>
 </head>
-	<body ng-app="myApp" ng-controller="SignInCtrl as vm">
+	<body  ng-controller="SignInCtrl as vm">
 		
 
-
-	<nav class="navbar navbar-default " >
+<div ng-include="'./templates/navbar_dashboard.html'"></div>
+<!-- <div ng-include="'./templates/navbar.html'"></div> -->
+	<!-- <nav class="navbar navbar-default " >
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -45,7 +47,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active" ng-click="vm.clearCurrent()"><a href="" >Home</a></li>
-            <li class="" ><!-- ng-click="vm.clearCurrent()" -->
+            <li class="" >
             <md-button class="md-raised" ng-click="vm.openSidebar()" ng-show="vm.showMoreOptions()">More Options</md-button ></li>
            </ul>
           <ul class="nav navbar-nav navbar-right" ng-if="!signedIn">
@@ -54,9 +56,9 @@
           <ul class="nav navbar-nav navbar-right" ng-if="signedIn">
             <li><button ng-click="vm.signOut()" type="button" class= "btn btn-danger navbar-btn">Sign Out</button></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
-    </nav>
+    </nav> -->
 
 
 	<div class="container">

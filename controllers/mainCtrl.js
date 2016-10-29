@@ -3,7 +3,7 @@
 * @name myApp.controller:mainCtrl
 * @description:
 *
-*This is the controller respnsible to show the list of the resourse's options for the user. 
+* This is the controller respnsible to show the list of the resourse's options for the user. 
 * It divides the the options in two lists, the first is the children of the resource and the other, 
 * which can be found if user clicks the "More Options" button, is the list of the available CRUD actions.
 * 
@@ -38,7 +38,7 @@ app.controller('mainCtrl',['config','$http','$q','$scope','$rootScope','$locatio
 		vm.firstcall = function(){
 			
 				vm.currentObject = $rootScope.currentObject;
-				vm.currentObject = CurrentOb.test();
+				// vm.currentObject = CurrentOb.test();
 				if( angular.isUndefined(vm.currentObject.linkURI)){
 
 					vm.objUrl = config.apiUrl;
@@ -134,14 +134,14 @@ app.controller('mainCtrl',['config','$http','$q','$scope','$rootScope','$locatio
 		*
 		**/
 			
-		vm.childImg = function(children){
+		vm.childImg = function(){
 			
 			var promises = [];
 			angular.forEach(vm.children, function(child){
 						var deferred = $q.defer();
 				angular.forEach(child, function(key){
 					if (typeof key == 'string'){
-						var imgFormats = ['jpg','jpeg','gif','png','tif','bmp','ico'];
+						var imgFormats = ['.jpg','.jpeg','.gif','.png','.tif','.bmp','.ico'];
 						for (i=0;i<imgFormats.length;i++){
 							if(key.includes(imgFormats[i])){
 								child.imageUrl2=key;
@@ -172,7 +172,12 @@ app.controller('mainCtrl',['config','$http','$q','$scope','$rootScope','$locatio
 				angular.forEach(vm.children,function(child){
 					angular.forEach(child,function(key){
 						if (key == obj.linkRel)
+							if(vm.dashboard === true){
+								obj.child = child;
+							}
+							else{
 							obj.imageUrl = child.imageUrl2;
+							}
 					});
 				});
 			});
@@ -191,7 +196,7 @@ app.controller('mainCtrl',['config','$http','$q','$scope','$rootScope','$locatio
 		**/   
 
 		vm.setCurrentObj= function(obj){
-			$rootScope.previusObj = $rootScope.currentObject;
+			$rootScope.previousObj = $rootScope.currentObject;
 			$rootScope.currentObject = obj;
 			CurrentOb.set(obj);
 			// console.log(obj)
@@ -226,7 +231,7 @@ app.controller('mainCtrl',['config','$http','$q','$scope','$rootScope','$locatio
 						$location.path("/") ;			  // for example if (obj.linkURI == "*/specificresource"){ 
 					}									  // location.path("/specific") }
 					else{								  // else {location.path("/")}
-						$location.path("/list");		  // and add the route to the appYaml.config in the appYaml.js file
+						$location.path("/list");		  // and add the route to the app.config in the app.js file
 					}
 
 				}
@@ -235,7 +240,7 @@ app.controller('mainCtrl',['config','$http','$q','$scope','$rootScope','$locatio
 				 	vm.children2 = [];			 // for example if (obj.linkURI == "*/specificresource/id"){ 
 				 	$scope.embededUri = '';	     // location.path("/otherroute") }
 					vm.embededType ='';          // else {location.path("/view") }
-					vm.embeded = false;          // and add the route to the appYaml.config in the appYaml.js file
+					vm.embeded = false;          // and add the route to the app.config in the app.js file
 					vm.embededProperty ='';
 				 	$location.path("/view");
 				}
@@ -284,7 +289,7 @@ app.controller('mainCtrl',['config','$http','$q','$scope','$rootScope','$locatio
 			.then(function(response){
 				vm.objs = response.data;
 				vm.find($rootScope.currentObject.linkURI);
-				vm.setCurrentObj($rootScope.previusObj);
+				vm.setCurrentObj($rootScope.previousObj);
 				$location.path("/view");
 			})
 			.catch(function(error){

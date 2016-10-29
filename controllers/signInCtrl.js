@@ -15,8 +15,8 @@
 		vm.formType = {};
 		vm.formObj = {};
 		vm.formReq = {};
-		vm.objUrl = config.signInUrl;
-		vm.signup = false;
+		vm.signInUrl = config.signInUrl;
+		// vm.signup = false;
 		$scope.serviceName = config.serviceName;
 
 
@@ -41,13 +41,13 @@
 
 			$http({
 				method : 'get',
-				url : vm.objUrl,
+				url : vm.signInUrl,
 				headers: {
 					'Authorization': 'Basic ' + vm.credentials,
 					'Content-Type': 'application/json'}
 			})
 			.then(function(response){
-				$rootScope.credentials = vm.credentials;
+				// $rootScope.credentials = vm.credentials;
 				SignIn.credentials = vm.credentials;
 				SignIn.createHeader();
 				Notification.success("Login successful. Welcome " + username);
@@ -72,7 +72,7 @@
 		**/   
 
 		vm.signOut = function(){
-			$rootScope.credentials = "";
+			SignIn.credentials = "";
 			$rootScope.signedIn = false;
 			SignIn.headers = {};
 		};
@@ -102,7 +102,7 @@
 			for (i = 0 ; i<vm.parsedTable.length; i++){
 				var y = vm.parsedTable[i].Name;
 				var k =new RegExp( y +'\/\\d{1,4}$');
-				if (k.test(vm.objUrl) || vm.objUrl.endsWith(y) ){
+				if (k.test(vm.signInUrl) || vm.signInUrl.endsWith(y) ){
 					vm.name = y;
 					vm.formObj = {};
 					for(j=0; j<vm.parsedTable[i].Properties.length; j++){
@@ -131,7 +131,7 @@
 		vm.signUp = function(){
 			$http({
 				method : 'POST',
-				url : vm.objUrl,
+				url : vm.signInUrl,
 				data : vm.formObj
 			})
 			.then(function(response){

@@ -12,13 +12,13 @@ app.controller('viewCtrl',['config','$http','$scope','$rootScope','$q','$locatio
 
 		var vm = this;
 
-		vm.formObj = {};
-		vm.formType = {};
-		vm.table = [];
-		vm.currentObject = $rootScope.currentObject;
+		// vm.formObj = {};
+		// vm.formType = {};
+		// vm.table = [];
+		// vm.currentObject = $rootScope.currentObject;
 		vm.children=[];
 		vm.children2=[];
-		$scope.limit =1;
+		
 		$scope.embededUri = '';
 		vm.embededType ='';
 		vm.embeded = false;
@@ -99,7 +99,7 @@ app.controller('viewCtrl',['config','$http','$scope','$rootScope','$q','$locatio
 		// 	.then(function(response){
 		// 		vm.objs = response.data;
 		// 		vm.find($rootScope.currentObject.linkURI);
-		// 		vm.setCurrentObj($rootScope.previusObj);
+		// 		vm.setCurrentObj($rootScope.previousObj);
 		// 		$location.path("/view");
 		// 	});
 		// };
@@ -119,7 +119,7 @@ app.controller('viewCtrl',['config','$http','$scope','$rootScope','$q','$locatio
 				method : 'delete',
 				url : obj.linkURI,
 				headers : SignIn.headers,
-				data: vm.formObj
+				// data: vm.formObj
 			})
 			.then(function(response){
 				vm.objs = response.data;
@@ -181,7 +181,7 @@ app.controller('viewCtrl',['config','$http','$scope','$rootScope','$q','$locatio
 						vm.embeded = true;
 						vm.embededType = vm.parsedTable[i].Features.embededType.trim();
 						vm.embededProperty = vm.parsedTable[i].Features.embededProperty.trim();
-						console.log(vm.embededType);
+						// console.log(vm.embededType);
 					}
 				}
 			}
@@ -208,30 +208,14 @@ app.controller('viewCtrl',['config','$http','$scope','$rootScope','$q','$locatio
 				var y = vm.parsedTable[i].Name;
 				var k =new RegExp( y +'\/\\d{1,4}$');
 				if (k.test(linkURI) || linkURI.endsWith(y) ){
-					$rootScope.previousState = linkURI.split(k)[0];
+					// $rootScope.previousState = linkURI.split(k)[0];
 					vm.name = y;
-					// vm.formObj = {};
-					// for(j=0; j<vm.parsedTable[i].Properties.length; j++){
-					// 	var key = vm.parsedTable[i].Properties[j].Name;
-					// 	var type = vm.parsedTable[i].Properties[j].Type;
-					// 	vm.formObj[key] = "" ;
-					// 	vm.formType[key] = type;
-					// }
-					// vm.passArguments ();
+					
 				}
 			}
 		};
 
-		// vm.passArguments = function(){
-		// 	for (var key in vm.formObj) {
-  // 				if(vm.objs.hasOwnProperty(key) ) {
-		// 	      vm.formObj[key] = vm.objs[key];
-		// 	    }
-		// 	  }
-
-					 
-		// };
-
+		
 		/**
 		* @ngdoc method
 		* @name setCurrentObj
@@ -245,7 +229,7 @@ app.controller('viewCtrl',['config','$http','$scope','$rootScope','$q','$locatio
 
 		vm.setCurrentObj= function(obj){
 			var c= obj;
-			$rootScope.previusObj = $rootScope.currentObject;
+			$rootScope.previousObj = $rootScope.currentObject;
 			$rootScope.currentObject = obj;
 			CurrentOb.set(c);
 			vm.objUrl = $rootScope.currentObject.linkURI;
@@ -440,9 +424,9 @@ app.controller('viewCtrl',['config','$http','$scope','$rootScope','$q','$locatio
 							vm.returnRoute = "main";
 						}
 						else if (isNaN(uriEnding)){
-							if ($rootScope.previusObj.linkURI !== $rootScope.currentObject.linkURI){
-								vm.returnUri = $rootScope.previusObj.linkURI;	
-								vm.returnObj = $rootScope.previusObj;
+							if ($rootScope.previousObj.linkURI !== $rootScope.currentObject.linkURI){
+								vm.returnUri = $rootScope.previousObj.linkURI;	
+								vm.returnObj = $rootScope.previousObj;
 								vm.returnRoute = "view";
 							}
 							// console.log(returnUri)
@@ -464,7 +448,7 @@ app.controller('viewCtrl',['config','$http','$scope','$rootScope','$q','$locatio
 		// 		$location.path( "/" );
 		// 	}
 		// 	else {
-		// 		vm.setCurrentObj($rootScope.previusObj);
+		// 		vm.setCurrentObj($rootScope.previousObj);
 		// 		$location.path( "/view" );
 		// 	}
 
@@ -495,7 +479,7 @@ app.controller('viewCtrl',['config','$http','$scope','$rootScope','$q','$locatio
 						$location.path("/") ;			  // for example if (obj.linkURI == "*/specificresource"){ 
 					}									  // location.path("/specific") }
 					else{								  // else {location.path("/")}
-						$location.path("/list");		  // and add the route to the appYaml.config in the appYaml.js file
+						$location.path("/list");		  // and add the route to the app.config in the app.js file
 					}
 
 				}
@@ -504,7 +488,7 @@ app.controller('viewCtrl',['config','$http','$scope','$rootScope','$q','$locatio
 				 	vm.children2 = [];			 // for example if (obj.linkURI == "*/specificresource/id"){ 
 				 	$scope.embededUri = '';	     // location.path("/otherroute") }
 					vm.embededType ='';          // else {location.path("/view") }
-					vm.embeded = false;          // and add the route to the appYaml.config in the appYaml.js file
+					vm.embeded = false;          // and add the route to the app.config in the app.js file
 					vm.embededProperty ='';
 				 	$location.path("/view");  
 				}
