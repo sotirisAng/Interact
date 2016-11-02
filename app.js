@@ -17,13 +17,13 @@
     app.config(function($routeProvider){
 		$routeProvider
 		.when('/', {
-			// templateUrl:'templates/main.html'})
-			templateUrl:'templates/dashboard.html'})
+			templateUrl:'templates/main.html'})
+			// templateUrl:'templates/dashboard.html'})
 		.when('/list', {
 			templateUrl:'templates/list.html'})
 		.when('/view', {
-			// templateUrl:'templates/view.html'})
-			templateUrl:'templates/view_dashboard.html'})
+			templateUrl:'templates/view.html'})
+			// templateUrl:'templates/view_dashboard.html'})
 		.when('/edit', {
 			templateUrl:'templates/edit.html'})
 		.when('/signin', {

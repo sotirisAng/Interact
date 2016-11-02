@@ -8,6 +8,15 @@ body {
 .navbar {
 	/*margin-top: -50px;*/
 }
+
+md-toolbar {
+    margin-top: 40px;
+  }
+
+.panel {
+    margin-top: 40px;
+  }
+
 .marketing .col-lg-4 {
   margin-bottom: 20px;
   text-align: center;
